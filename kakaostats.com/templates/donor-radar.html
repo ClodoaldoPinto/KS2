@@ -1,0 +1,82 @@
+{% from 'macros.html' import classCorDonor -%}
+{%- extends "base.html" %}
+
+{% block content %}
+<div style="position: relative;">
+<input type="button" value="Show Chart" style="position: absolute; right: 100px;"
+    onclick="showChart();"
+    />
+<h2 style="text-align: center;">
+    <span class="pageTitle">
+        {{ rs['donor'][0]['usuario_nome'] }}'s radar
+        </span>
+    </h2>
+</div>
+<div id="chartDiv">
+    <img src="/donor-radar-chart?radar={{ radar_json }}"
+        width="640" height="300" id="chartImage" alt="Donor Radar Chart"
+        />
+    </div>
+
+<div style="background-color: #fafafa;">
+    <table class="radar" id="radar" width="100%">
+        <thead>
+            <tr>
+                <th colspan="2">Overtake</th>
+                <th rowspan="3">Challenging Member</th>
+                <th colspan="10">Challenging Member Stats</th>
+                </tr>
+            <tr>
+                <th rowspan="2">Days</th>
+                <th rowspan="2">Date</th>
+                <th rowspan="1" colspan="2">Ranking</th>
+                <th colspan="4">Total Points</th>
+                <th colspan="4">Points Difference</th>
+                </tr>
+            <tr>
+                <th>Team</th>
+                <th>Pro&shy;ject</th>
+                <th>Up&shy;date</th>
+                <th>24 hrs</th>
+                <th>7 days</th>
+                <th>Total</th>
+                <th>Up&shy;date</th>
+                <th>24 hrs</th>
+                <th>7 days</th>
+                <th>Total</th>
+                </tr>
+            </thead>
+        <tbody>
+            {%- for l in rs.radar %}
+            <tr class="{{ loop.cycle('cs', 'cn') }}">
+                {% if loop.index == 1 %}
+                    {% set pontos_0 = l.pontos_0 %}
+                {% endif %}
+                <td class="{{ 'redColor' if l.pontos_0 < pontos_0 else 'greenColor' }}">{{ l.days | zero2empty }}</td>
+                <td>{{ l.date | replace(' ', '&nbsp;') }}</td>
+                <td class="texto">
+                    {%- if loop.index > 1 -%}
+                    <a class="{{ classCorDonor(l.pontos_7) }}" href="/donor-radar?donor={{ l.donor_number }}">{{ l.donor_name | wordwrap(20) | e | replace('\n', '&#8203;') }}</a>
+                    {%- else %}
+                    <span class="{{ classCorDonor(l.pontos_7) }}">{{ l.donor_name | wordwrap(20) | e | replace('\n', '&#8203;') }}</span>
+                    {%- endif -%}
+                    </td>
+                <td>{{ l.rank_0_time | number_group | zero2empty }}</td>
+                <td>{{ l.rank_0 | number_group | zero2empty }}</td>
+                <td>{{ l.pontos_up | number_group | zero2empty }}</td>
+                <td>{{ l.pontos_24 | number_group | zero2empty }}</td>
+                <td class="{{ classCorDonor(l.pontos_7) }}">{{ l.pontos_7 | number_group | zero2empty }}</td>
+                <td>{{ l.pontos_0 | number_group | zero2empty }}</td>
+                <td>{{ l.pontos_up_diff | number_group | zero2empty }}</td>
+                <td>{{ l.pontos_24_diff | number_group | zero2empty }}</td>
+                <td>{{ l.pontos_7_diff | number_group | zero2empty }}</td>
+                <td>{{ l.pontos_0_diff | number_group | zero2empty }}</td>
+                </tr>
+            {%- endfor %}
+            </tbody>
+        </table>
+    </div>
+<script type="text/javascript">
+    fxheaderInit('radar', 400);
+</script>
+{% endblock %}

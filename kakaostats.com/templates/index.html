@@ -1,0 +1,180 @@
+{% from 'macros.html' import paginador, classCorTime %}
+{% macro url_paginas() %}
+{{ paginador(indice_paginas, view='index', page=page, order_opt=None if order_opt == 3 else order_opt, search=search or None) }}
+{% endmacro -%}
+
+{% extends "base.html" %}
+
+{%- block head -%}
+<style type="text/css">
+    .fieldsetToggle { position:relative; width:auto; }
+    .formSearch { float:left;margin:0 0 6px 13px; }
+    .headFooter { text-align: right; padding: 10px 40px 0 ;}
+    </style>
+{{ super() }}
+{%- endblock %}
+
+{%- block content -%}
+<div class="divBack">
+    <div>
+        <form id="search_form" method="get" action="/" class="formSearch">
+            <fieldset>
+            {% if order_opt != 3 %}
+            <input type="hidden" name="order" value="{{ order_opt }}" />
+            {% endif %}
+            <input type="text" name="search" id="search"
+                   value="{{ '' if search == None else search | e }}" title="A fragment of the team name" />
+            <input type="submit" id="search_submit" value="Search" />
+            <input type="button" id="search_reset" value="Clear"
+                   onclick="$('#search').removeAttr('name');$('#search_form').submit();" />
+                </fieldset>
+            <fieldset>Total: {{ n_times | number_group }} teams</fieldset>
+            <fieldset class="fieldsetToggle">
+                <input type="button" value="Toggle Columns"
+                    onclick="
+                    if ($('#toggleColumnBox').css('z-index') == '-100') {
+                        $('#toggleColumnBox').css('z-index', '100').fadeTo('fast', 0.85);
+                        $(this).val('Close');
+                        }
+                    else {
+                        $('#toggleColumnBox').css('display', 'none').css('z-index', '-100');
+                        $(this).val('Toggle Columns');
+                        }"
+                    />
+                    <div id="toggleColumnBox" class="toggleColumnBox">
+                        <label for="toggleLineNumber">
+                            <input type="checkbox" id="toggleLineNumber" checked="checked"
+                               onchange="toggleColumn('table.dados', 0, 'index');" />
+                            Line Number
+                            </label><br />
+                        <label for="toggleMembersActive">
+                            <input type="checkbox" id="toggleMembersActive" checked="checked"
+                                onchange="toggleColumn('table.dados', 1, 'index');" />
+                            Members Active
+                            </label><br />
+                        <label for="toggleMembersNew">
+                            <input type="checkbox" id="toggleMembersNew" checked="checked"
+                                onchange="toggleColumn('table.dados', 2, 'index');" />
+                            Members New
+                            </label><br />
+                        <label for="toggleRank24">
+                            <input type="checkbox" id="toggleRank24" checked="checked"
+                                onchange="toggleColumn('table.dados', 5, 'index');" />
+                            Rank in 24 Hs
+                            </label><br />
+                        <label for="toggleRank7">
+                            <input type="checkbox" id="toggleRank7" checked="checked"
+                                onchange="toggleColumn('table.dados', 6, 'index');" />
+                            Rank in 7 days
+                            </label><br />
+                        <label for="toggleRank30">
+                            <input type="checkbox" id="toggleRank30" checked="checked"
+                                onchange="toggleColumn('table.dados', 7, 'index');" />
+                            Rank in 30 days
+                            </label><br />
+                        <label for="togglePoints7perActive">
+                            <input type="checkbox" id="togglePoints7perActive" checked="checked"
+                                onchange="toggleColumn('table.dados', 11, 'index');" />
+                            Points in the last seven days per active member
+                            </label>
+                        <input type="hidden" id="toggleColumnIds" value="toggleLineNumber,toggleMembersActive,toggleMembersNew,,,toggleRank24,toggleRank7,toggleRank30,,,,togglePoints7perActive," />
+                        </div>
+                </fieldset>
+            </form>
+        <div class="divPaginador">{{ url_paginas() }}</div>
+        </div>
+    <table class="dados" id="allteams" width="100%">
+        <thead>
+            {%- macro th(rowspan, order, titulo) -%}
+                <th rowspan="{{ rowspan }}"
+                    {%- if order_opt == order %} class="destaque">{{ titulo }}
+                    {%- else -%}
+                    ><a href="{{ url_for('index', order=order, search=search) | e }}">{{ titulo }}</a>
+                    {%- endif -%}
+                    </th>
+            {%- endmacro %}
+            <tr>
+                <th rowspan="3">Li&shy;ne</th>
+                <th rowspan="1" colspan="2">Members</th>
+                {{ th(3, 2, 'Team') }}
+                <th colspan="4">Rank</th>
+                <th colspan="5">Points
+                    <input type="checkbox" class="smallThosandsCheckBox"
+                        {%- if small_thousands == 'checked' %} checked="checked"{% endif %}
+                        onclick="
+                        var value = '';
+                        $e = $('.tbodyDados tr td span.st');
+                        $e.toggleClass('xxSmall');
+                        if ($e.filter(':first').hasClass('xxSmall'))
+                           value = 'checked';
+                        setCookie('smallThousands', value, 365);
+                        "/>
+                        <span>
+                            123,<span class="xxSmall">456</span>
+                            </span>
+                    </th>
+                </tr>
+            <tr>
+                {{ th(2, 1, 'Ac&shy;tive') }}
+                {{ th(2, 11, 'New') }}
+                {{ th(2, 3, 'Cur&shy;rent') }}
+                {{ th(2, 4, 'In 24 Hs') }}
+                {{ th(2, 5, 'In 7 days') }}
+                {{ th(2, 6, 'In 30 days') }}
+                {{ th(2, 12, 'Last Up&shy;date') }}
+                {{ th(2, 7, '24 hours') }}
+                <th colspan="2">7 days</th>
+                {{ th(2, 10, 'Total (1,000)') }}
+                </tr>
+            <tr>
+                {{ th(1, 8, 'Total') }}
+                {{ th(1, 9, 'Per Active') }}
+                </tr>
+            </thead>
+        <tbody class="tbodyDados">
+            {%- macro tdRank(r0, r1) -%}
+                <td class="
+                    {%- if r0 != r1 %} {% if r1 > r0 %}redColor{% else %}greenColor{% endif %}">{{ r1 | number_group }}
+                    {%- else -%}">
+                    {%- endif -%}
+                    </td>
+            {%- endmacro -%}
+            {%- for l in rs.times %}
+            <tr class="{{ loop.cycle('cn', 'cs') }}">
+                <td>{% if offset + loop.index > 2 %}{{ offset + loop.index - 2}}{% endif %}</td>
+                <td>{{ l.active_members | number_group }}</td>
+                <td>{{ l.new_members | number_group}}</td>
+                <td class="texto">
+                    {%- if l.n_time != -1 -%}
+                    <a class="{{ classCorTime(l.pontos_7) }}" href="/members?team={{ l.n_time }}">{{ l.time_nome | wordwrap(20) | e | replace('\n', '&#8203;') }}</a>
+                    {%- else -%}
+                    <span class="{{ classCorTime(l.pontos_7) }}">{{ l.time_nome | wordwrap(20) | e | replace('\n', '&#8203;') }}</span>
+                    {%- endif -%}
+                    </td>
+                <td>{{ l.rank_0 | number_group | zero2empty }}</td>
+                {{ tdRank(l.rank_0, l.rank_24) }}
+                {{ tdRank(l.rank_0, l.rank_7) }}
+                {{ tdRank(l.rank_0, l.rank_30) }}
+                <td>{{ l.pontos_up | int | small_thousands }}</td>
+                <td>{{ l.pontos_24 | int | small_thousands }}</td>
+                <td>{{ l.pontos_7 | int | small_thousands }}</td>
+                <td>{{ (l.pontos_7 / l.active_members) | int | small_thousands }}</td>
+                <td>{{ l.pontos_0 | int | small_thousands }}</td>
+                </tr>
+            {%- endfor %}
+            </tbody>
+        </table>
+    <div class="headFooter">{{ url_paginas() }}</div>
+</div>
+
+<script type="text/javascript">
+{%- if small_thousands != 'checked' %}
+$('table.dados tbody tr td span.st').toggleClass('xxSmall');
+{%- endif %}
+headerMatrixBuilder('table.dados');
+var toggleDefaultArray = [true,true,false,true,true,false,false,true,true,true,true,true,true]
+toggleColumns('table.dados', 'index', $('#toggleColumnIds').val(), toggleDefaultArray);
+fxheaderInit('allteams', 400);
+$('.tbodyDados').on('hover', 'tr', destaque);
+</script>
+{% endblock %}

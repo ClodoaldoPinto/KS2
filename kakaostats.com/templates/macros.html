@@ -1,0 +1,41 @@
+{%- macro classCorTime(p) -%}
+    {%- if p >= 10000000 %}c1
+    {%- elif p >= 5000000 %}c2
+    {%- elif p >= 1000000 %}c3
+    {%- elif p >= 500000 %}c4
+    {%- elif p >= 100000 %}c5
+    {%- elif p >= 50000 %}c6
+    {%- elif p >= 1 %}c7
+    {%- else %}c8
+    {%- endif -%}
+{%- endmacro -%}
+
+{%- macro classCorDonor(p) -%}
+    {%- if p >= 700000 %}c1
+    {%- elif p >= 350000 %}c2
+    {%- elif p >= 70000 %}c3
+    {%- elif p >= 35000 %}c4
+    {%- elif p >= 7000 %}c5
+    {%- elif p >= 700 %}c6
+    {%- elif p >= 1 %}c7
+    {%- else %}c8
+    {%- endif -%}
+{%- endmacro -%}
+
+{% macro paginador(indice_paginas, view='index', page=1, order_opt=None, search=None, activity=None, team=None) %}
+Page: 
+{% for pagina in indice_paginas %}
+    {%- if pagina != page -%}
+    <a class="paginador" href="{{ url_for(view,
+        page=pagina if pagina != 1 else None,
+        order=order_opt,
+        search=search if search else None,
+        activity=activity,
+        team=team
+        ) | e }}">{{ pagina }}</a>
+    {%- else -%}
+        {{ pagina }}
+    {%- endif %}
+{% endfor -%}
+{% endmacro -%}
+

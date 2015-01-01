@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    {%- block head -%}
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+        <link rel="stylesheet" href="/static/kakaostats.css" type="text/css" media="screen" />
+        <link rel="SHORTCUT ICON" href="/static/ksicon.ico" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+        <script src="/static/kakaostats.js" type="text/javascript"></script>
+        <title>KakaoStats {% block title %}{% endblock %}</title>
+        {%- endblock %}
+        </head>
+    <body>
+        {%- include "header.html" %}
+        {%- block content %}
+            {%- endblock %}
+        <!--<p>KakaoStats proudly implements:</p>-->
+        <p>
+            <a href="http://validator.w3.org/check?uri=referer"><img
+                src="/static/valid-xhtml11.png"
+                alt="Valid XHTML 1.1" height="31" width="88" /></a>
+            <!--<a href="http://flask.pocoo.org/"><img-->
+            <!--    src="/static/flask-project-s.png" width="124" height="26"-->
+            <!--    alt="a Flask project" title="a Flask project" /></a>-->
+            <!--<a href="http://www.postgresql.org/"><img-->
+            <!--    src="/static/88x31_2.gif" width="88" height="31"-->
+            <!--    alt="Postgresql powered" title="Postgresql powered" /></a>-->
+            <!--<a href="http://www.python.org/about/"><img-->
+            <!--    src="/static/python-powered-w-70x28.png" width="70" height="28"-->
+            <!--    alt="Python powered" title="Python powered" /></a>-->
+            <!--<a href="http://www.centos.org/"><img-->
+            <!--    src="/static/poweredby_centos.png" width="88" height="31"-->
+            <!--    alt="Powered by Centos" title="Powered by Centos" /></a>-->
+            <!--<a href="http://httpd.apache.org/"><img-->
+            <!--    src="/static/apache_pb.gif" width="259" height="32"-->
+            <!--    alt="Powered by Apache" title="Powered by Apache" /></a>-->
+            </p>
+        </body>
+</html>

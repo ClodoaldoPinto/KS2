@@ -1,0 +1,122 @@
+<div>
+  <a href="/">
+    <img src="/static/kakaostats.png"
+      width="225"
+      height="60"
+      alt="KakaoStats"
+      title="KakaoStats"
+      style="margin:0;vertical-align:top;"
+      />
+    </a>
+  </div>
+<table style="margin:10px 10px;">
+  <tr>
+    <td>
+      <ul id="nav">
+          <li>
+              <a{% if not menu['anchors'] %} class="disabled"{% endif %}>Anchors</a>
+              <ul>
+                  <li>
+                      <a
+                          {%- if not menu['anchors_all_teams'] %} class="disabled"
+                          {%- else %} href="/"{% endif -%}
+                          >All Teams</a>
+                      </li>
+                  <li class="bottommost">
+                      <a
+                          {%- if not menu['anchors_all_donors'] %} class="disabled"
+                          {%- else %} href="/donors"{% endif -%}
+                          >All Donors</a>
+                      </li>
+                  </ul>
+              </li>
+            <li>
+              <a{% if not menu['team'] %} class="disabled"{% endif %}>Team</a>
+              <ul>
+                  <li>
+                      <a
+                          {%- if not menu['team'] or not menu['team_members'] %} class="disabled"
+                          {%- else %} href="/members?team={{ n_time }}"{% endif -%}
+                          >Members</a>
+                      </li>
+                  <li>
+                      <a
+                          {%- if not menu['team'] or not menu['team_history'] %} class="disabled"
+                          {%- else %} href="/team-history?team={{ n_time }}"{% endif -%}
+                          >History</a>
+                      </li>
+                  <li>
+                      <a
+                          {%- if not menu['team'] or not menu['team_radar'] %} class="disabled"
+                          {%- else %} href="/team-radar?team={{ n_time }}"{% endif -%}
+                          >Radar</a>
+                      </li>
+                  <li>
+                      <a
+                          {%- if not menu['team'] or not menu['team_size'] %} class="disabled"
+                          {%- else %} href="/team-size?team={{ n_time }}"{% endif -%}
+                          >Size</a>
+                      </li>
+                  <li>
+                      <a
+                          {%- if not menu['team'] or not menu['team_monthly'] %} class="disabled"
+                          {%- else %} href="/mrt.php?t={{ n_time }}"{% endif -%}
+                          >Monthly</a>
+                      </li>
+                  <li>
+                      <a
+                          {%- if not menu['team'] or not menu['team_subteam'] %} class="disabled"
+                          {%- else %} href="/subteam.php?t={{ n_time }}"{% endif -%}
+                          >Subteams</a>
+                      </li>
+                  <li class="bottommost">
+                      <a
+                          {%- if not menu['team'] or not menu['team_milestones'] %} class="disabled"
+                          {%- else %} href="/tm.php?t={{ n_time }}"{% endif -%}
+                          >Milestones</a>
+                      </li>
+              </ul>
+          </li>
+          <li>
+              <a
+                  {%- if not menu['donor'] %} class="disabled"{% endif -%}
+                  >Donor</a>
+              <ul>
+                  <li>
+                      <a
+                          {%- if not menu['donor'] or not menu['donor_log'] %} class="disabled"
+                          {%- else %} href="/donor-log?donor={{ donor }}"{% endif -%}
+                          >Log</a>
+                      </li>
+                  <li>
+                      <a
+                          {%- if not menu['donor'] or not menu['donor_history'] %} class="disabled"
+                          {%- else %} href="/donor-history?donor={{ donor }}"{% endif -%}
+                          >History</a>
+                      </li>
+                  <li>
+                      <a
+                          {%- if not menu['donor'] or not menu['donor_radar'] %} class="disabled"
+                          {%- else %} href="/donor-radar?donor={{ donor }}"{% endif -%}
+                          >Radar</a>
+                      </li>
+                  <li class="bottommost">
+                      <a
+                          {%- if not menu['donor'] or not menu['donor_milestones'] %} class="disabled"
+                          {%- else %} href="/dm.php?u={{ n_donor }}"{% endif -%}
+                          >Milestones</a>
+                      </li>
+                  </ul>
+              </li>
+          <li class="rightmost">
+              <a>Links</a>
+              <ul>
+                  <li><a href="http://forum.kakaostats.com/">Forum</a></li>
+                  <li><a href="http://fahwiki.net/">Wiki</a></li>
+                  <li class="bottommost"><a href="http://foldingforum.org/">Community</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </td>
+    </tr>
+  </table>

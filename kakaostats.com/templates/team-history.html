@@ -1,0 +1,82 @@
+{%- extends "base.html" %}
+
+{% block content %}
+<h2 style="text-align: center;">
+    <span class="pageTitle">
+        {{ team_name }}'s history
+        </span>
+    </h2>
+<div style="text-align: center;margin-bottom: 15px;">
+    <img src="/team-history-chart?history={{ history_json }}"
+        width="640" height="300" class="imgChart" alt="Daily Production History"
+        />
+    </div>
+<table class="history">
+    <thead>
+        <tr>
+            <th colspan="9">
+                <label>
+                    <input type="radio" name="toggle" checked="checked" value="0" />Points
+                    </label>
+                <label>
+                    <input type="radio" name="toggle" value="1"/>WUs
+                    </label>
+                <label>
+                    <input type="radio" name="toggle" value="2"/>Points per WU
+                    </label>
+                </th>
+            </tr>
+        <tr id="column_heads">
+            <th>UTC</th>
+            <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th>
+            <th>Total</th>
+            </tr>
+        </thead>
+    <tbody>
+    {% for group in (rs['daily'] | groupby('yw') | sort(True))[:8] -%}
+        <tr{{ loop.cycle('', ' class="cs"') }}>
+            <td>{{ group.list[0] | date_to_monday }}</td>
+            {% for i in range(1, group.list[0]['dow']) -%}
+            <td></td>
+                {%- endfor %}
+            {%- for l in group.list %}
+            <td>
+                <span class="">{{ l.points | number_group | zero2empty }}</span>
+                <span class="displayNone">{{ l.wus | number_group | zero2empty }}</span>
+                <span class="displayNone">{{ ((l.points / l.wus) if l.wus != 0 else 0) | number_group | zero2empty }}</span>
+                </td>
+                {%- endfor -%}
+            {% for i in range(group.list[-1]['dow'], 7) -%}
+            <td></td>
+                {%- endfor %}
+            <td>
+                {% set points = (group.list | sum(attribute='points')) %}
+                {% set wus = (group.list | sum(attribute='wus')) %}
+                {% set points_per_wu = (points / wus) if wus != 0 else 0 %}
+                <span class="">{{ points | number_group | zero2empty }}</span>
+                <span class="displayNone">{{ wus | number_group | zero2empty }}</span>
+                <span class="displayNone">{{ points_per_wu | number_group | zero2empty }}</span>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<script type="text/javascript">
+    $('#column_heads th').each(function() {
+            $(this).css('width', $(this).width());
+        }
+    );
+    $('table.history thead input:radio[name=toggle]').change(function() {
+        var index = $(this).attr('value');
+        $('table.history tbody td').each(function () {
+            $(this)
+                .children('span')
+                .eq(index)
+                .removeClass('displayNone')
+                .siblings('span')
+                .addClass('displayNone')
+            ;
+        });
+    });
+</script>
+{% endblock %}

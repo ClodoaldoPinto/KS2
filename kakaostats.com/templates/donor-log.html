@@ -1,0 +1,32 @@
+{%- extends "base.html" %}
+
+{% block content %}
+<h2 style="text-align: center;">
+    <span class="pageTitle">
+        {{ rs['donor'][0]['usuario_nome'] }}'s log
+        </span>
+    </h2>
+{% for group in rs['update'] | groupby('day') | reverse -%}
+<table class="log">
+    <thead>
+        <tr>
+            <th colspan="3">{{ group.grouper }} - UTC</th>
+            </tr>
+        <tr>
+            <th>Time</th>
+            <th>Points</th>
+            <th>WUs</th>
+            </tr>
+        </thead>
+    <tbody>
+        {% for l in group.list -%}
+        <tr{{ loop.cycle('', ' class="cs"') }}>
+            <td style="text-align: center;">{{ l.time }}</td>
+            <td>{{ l.points  | number_group | zero2empty }}</td>
+            <td>{{ l.wus  | number_group | zero2empty }}</td>
+            </tr>
+        {% endfor -%}
+        </tbody>
+    </table>
+{% endfor %}
+{% endblock %}

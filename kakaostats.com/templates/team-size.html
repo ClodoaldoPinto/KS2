@@ -1,0 +1,76 @@
+{%- extends "base.html" %}
+
+{% block content %}
+<h2 style="text-align: center;">
+    <span class="pageTitle">
+        {{ team_name }}'s size
+        </span>
+    </h2>
+<div style="text-align: center;margin-bottom: 15px;">
+    <img src="/team-size-chart?history={{ history_json }}"
+        width="640" height="300" class="imgChart" alt="Team Size History"
+        />
+    </div>
+<table class="history">
+    <thead>
+        <tr>
+            <th colspan="9">
+                <label>
+                    <input type="radio" name="toggle" checked="checked" value="0" />Active
+                    </label>
+                <label>
+                    <input type="radio" name="toggle" value="1"/>New
+                    </label>
+                </th>
+            </tr>
+        <tr id="column_heads">
+            <th>UTC</th>
+            <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th>
+            <th>Ave&shy;rage</th>
+            </tr>
+        </thead>
+    <tbody>
+    {% for group in (rs['size'] | groupby('yw') | sort(True))[:20] -%}
+        <tr{{ loop.cycle('', ' class="cs"') }}>
+            <td>{{ group.list[0]['day'] }}</td>
+            {% for i in range(1, group.list[0]['dow']) -%}
+            <td></td>
+                {%- endfor %}
+            {%- for l in group.list %}
+            <td>
+                <span class="">{{ l.am | number_group | zero2empty }}</span>
+                <span class="displayNone">{{ l.nm | number_group | zero2empty }}</span>
+                </td>
+                {%- endfor -%}
+            {% for i in range(group.list[-1]['dow'], 7) -%}
+            <td></td>
+                {%- endfor %}
+            <td>
+                {% set am = (group.list | avg(attribute='am')) %}
+                {% set nm = (group.list | avg(attribute='nm')) %}
+                <span class="">{{ am | number_group | zero2empty }}</span>
+                <span class="displayNone">{{ nm | locale_format('%.1f') | zero2empty }}</span>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<script type="text/javascript">
+    $('#column_heads th').each(function() {
+            $(this).css('width', $(this).width());
+        }
+    );
+    $('table.history thead input:radio[name=toggle]').change(function() {
+        var index = $(this).attr('value');
+        $('table.history tbody td').each(function () {
+            $(this)
+                .children('span')
+                .eq(index)
+                .removeClass('displayNone')
+                .siblings('span')
+                .addClass('displayNone')
+            ;
+        });
+    });
+</script>
+{% endblock %}

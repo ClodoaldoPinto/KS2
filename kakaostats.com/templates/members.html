@@ -1,0 +1,196 @@
+{% from 'macros.html' import paginador, classCorTime, classCorDonor -%}
+{% macro url_paginas() %}
+{{ paginador(indice_paginas, view='members', team=n_time, page=page, order_opt=None if order_opt == 2 else order_opt, search=search or None, activity=activity or None) }}
+{% endmacro %}
+
+{%- extends "base.html" %}
+
+{%- block head -%}
+<style type="text/css">
+    .inputSearch { width:200px; }
+    .fieldsetToggle { position:relative; width:auto; }
+    .formSearch { float:left;margin:0 0 6px 13px; }
+    .headFooter { text-align: right; padding: 10px 40px 0 ;}
+    </style>
+{{ super() }}
+{%- endblock %}
+
+{% block content -%}
+<div class="divBack">
+    <div>
+        <form id="search_form" method="get" action="/members" class="formSearch"
+            onsubmit="if ($('#activity').val() == 'active') $('#activity').removeAttr('name');
+                if ($('#search').val() == '') $('#search').removeAttr('name');">
+            <fieldset>
+            {% if order_opt != 2 %}
+            <input type="hidden" name="order" value="{{ order_opt }}" />
+            {% endif %}
+            <input type="hidden" name="team" value="{{ n_time }}" />
+            <input type="text" name="search" id="search" class="inputSearch"
+                   value="{{ '' if search == None else search | e }}" title="Fragment of member name" />
+                {% if search -%}
+                <script type="text/javascript">
+                    $('#search').focus();
+                    </script>
+                {%- endif %}
+            <input type="submit" id="search_submit" value="Search" />
+            <input type="button" id="search_reset" value="Clear"
+                   onclick="$('#search').removeAttr('name');$('#search_form').submit();" />
+            </fieldset>
+            <fieldset>
+            Filter:
+            <select size="1" id="activity" name="activity"
+                    onchange="$('#search_form').submit();" class="selectActivity">
+                <option value="active" {% if not activity %}selected="selected"{% endif %}>Active{{rs['count']['active'] | number_group | justify(10)}}</option>
+                <option value="new" {% if activity == 'new' %}selected="selected"{% endif %}>New{{rs['count']['new'] | number_group | justify(13)}}</option>
+                <option value="inactive" {% if activity == 'inactive' %}selected="selected"{% endif %}>Inactive{{rs['count']['inactive'] | number_group | justify(8)}}</option>
+                <option value="all" {% if activity == 'all' %}selected="selected"{% endif %}>All{{rs['count']['all'] | number_group | justify(13)}}</option>
+            </select>
+            </fieldset>
+            <fieldset class="fieldsetToggle">
+                <input type="button" value="Toggle Columns"
+                    onclick="
+                    if ($('#toggleColumnBox').css('z-index') == '-100') {
+                        $('#toggleColumnBox').css('z-index', '100').fadeTo('fast', 0.85);
+                        $(this).val('Close');
+                        }
+                    else {
+                        $('#toggleColumnBox').css('display', 'none').css('z-index', '-100');
+                        $(this).val('Toggle Columns');
+                        }"
+                    />
+                    <div id="toggleColumnBox" class="toggleColumnBox">
+                        <label>
+                            <input type="checkbox" id="toggleLineNumber" checked="checked"
+                               onchange="toggleColumn('table.dados', 0, 'members');" />
+                            Line Number
+                            </label><br />
+                        <label>
+                            <input type="checkbox" id="toggleTeamRank24" checked="checked"
+                                onchange="toggleColumn('table.dados', 3, 'members');" />
+                            Team Rank in 24 Hs
+                            </label><br />
+                        <label>
+                            <input type="checkbox" id="toggleTeamRank7" checked="checked"
+                                onchange="toggleColumn('table.dados', 4, 'members');" />
+                            Team Rank in 7 days
+                            </label><br />
+                        <label for="toggleRank30">
+                            <input type="checkbox" id="toggleTeamRank30" checked="checked"
+                                onchange="toggleColumn('table.dados', 5, 'members');" />
+                            Team Rank in 30 days
+                            </label><br />
+                        <label>
+                            <input type="checkbox" id="toggleRank24" checked="checked"
+                                onchange="toggleColumn('table.dados', 7, 'members');" />
+                            Project Rank in 24 Hs
+                            </label><br />
+                        <label>
+                            <input type="checkbox" id="toggleRank7" checked="checked"
+                                onchange="toggleColumn('table.dados', 8, 'members');" />
+                            Project Rank in 7 days
+                            </label><br />
+                        <label for="toggleRank30">
+                            <input type="checkbox" id="toggleRank30" checked="checked"
+                                onchange="toggleColumn('table.dados', 9, 'members');" />
+                            Project Rank in 30 days
+                            </label><br />
+                        <input type="hidden" id="toggleColumnIds" value="toggleLineNumber,,,toggleTeamRank24,toggleTeamRank7,toggleTeamRank30,,toggleRank24,toggleRank7,toggleRank30,,,," />
+                        </div>
+                </fieldset>
+            </form>
+        <div class="divPaginador">{{ url_paginas() }}</div>
+        </div>
+    <table class="dados" id="members" width="100%">
+        <thead>
+            {%- macro th(rowspan, order, titulo) -%}
+                <th rowspan="{{ rowspan }}"
+                    {%- if order_opt == order %} class="destaque">{{ titulo }}
+                    {%- else -%}
+                    ><a href="{{ url_for('members', team=n_time, order=order, search=search, activity=activity) | e }}">{{ titulo }}</a>
+                    {%- endif -%}
+                    </th>
+            {%- endmacro %}
+            <tr>
+                <th rowspan="2">Li&shy;ne</th>
+                {{ th(2, 1, 'Member') }}
+                <th colspan="4">Team Ranking</th>
+                <th colspan="4">Project Ranking</th>
+                <th colspan="4">Points
+                    <input type="checkbox" class="smallThosandsCheckBox"
+                        {%- if small_thousands == 'checked' %} checked="checked"{% endif %}
+                        onclick="
+                        var value = '';
+                        $e = $('.tbodyDados tr td span.st');
+                        $e.toggleClass('xxSmall');
+                        if ($e.filter(':first').hasClass('xxSmall'))
+                           value = 'checked';
+                        setCookie('smallThousands', value, 365);
+                        "/>
+                        <span>
+                            123,<span class="xxSmall">456</span>
+                            </span>
+                    </th>
+                </tr>
+            <tr>
+                {{ th(1, 2, 'Cur&shy;rent') }}
+                {{ th(1, 3, 'In 24 Hs') }}
+                {{ th(1, 4, 'In 7 days') }}
+                {{ th(1, 5, 'In 30 days') }}
+                {{ th(1, 6, 'Cur&shy;rent') }}
+                {{ th(1, 7, 'In 24 Hs') }}
+                {{ th(1, 8, 'In 7 days') }}
+                {{ th(1, 9, 'In 30 days') }}
+                {{ th(1, 10, 'Last Up&shy;date') }}
+                {{ th(1, 11, '24 hours') }}
+                {{ th(1, 12, '7 days') }}
+                {{ th(1, 13, 'Total') }}
+                </tr>
+            </thead>
+        <tbody class="tbodyDados">
+            {%- macro tdRank(r0, r1) -%}
+                <td class="
+                    {%- if r0 != r1 %} {% if r1 > r0 %}redColor{% else %}greenColor{% endif %}">{{ r1 | number_group }}
+                    {% else %}">
+                    {%- endif -%}
+                    </td>
+            {%- endmacro -%}
+            {%- for l in rs.members %}
+            <tr class="{{ loop.cycle('cn', 'cs') }}">
+                <td>{% if offset + loop.index > 1 %}{{ offset + loop.index - 1 }}{% endif %}</td>
+                <td class="texto">
+                    {%- if loop.index > 1 -%}
+                    <a class="{{ classCorDonor(l.pontos_7) }}" href="/donor-log?donor={{ l.n_member }}">{{ l.name | wordwrap(20) | e | replace('\n', '&#8203;') }}</a>
+                    {%- else %}
+                    <span class="{{ classCorTime(l.pontos_7) }}">{{ l.name | wordwrap(20) | e | replace('\n', '&#8203;') }}</span>
+                    {%- endif -%}
+                    </td>
+                <td>{{ l.rank_0_team | number_group | zero2empty }}</td>
+                {{ tdRank(l.rank_0_team, l.rank_24_team) }}
+                {{ tdRank(l.rank_0_team, l.rank_7_team) }}
+                {{ tdRank(l.rank_0_team, l.rank_30_team) }}
+                <td>{{ l.rank_0 | number_group | zero2empty }}</td>
+                {{ tdRank(l.rank_0, l.rank_24) }}
+                {{ tdRank(l.rank_0, l.rank_7) }}
+                {{ tdRank(l.rank_0, l.rank_30) }}
+                <td>{{ l.pontos_up | int | small_thousands }}</td>
+                <td>{{ l.pontos_24 | int | small_thousands }}</td>
+                <td>{{ l.pontos_7 | int | small_thousands }}</td>
+                <td>{{ l.pontos_0 | int | small_thousands }}</td>
+                </tr>
+            {%- endfor %}
+            </tbody>
+        </table>
+        <div class="headFooter">{{ url_paginas() }}</div>
+    </div>
+<script type="text/javascript">
+{%- if small_thousands != 'checked' %}
+$('table.dados tbody tr td span.st').toggleClass('xxSmall');
+{%- endif %}
+headerMatrixBuilder('table.dados');
+var toggleDefaultArray = [true,true,true,false,false,true,true,false,false,true,true,true,true,true]
+toggleColumns('table.dados', 'members', $('#toggleColumnIds').val(), toggleDefaultArray);
+fxheaderInit('members', 400);
+$('.tbodyDados').on('hover', 'tr', destaque);
+</script>
+{% endblock %}

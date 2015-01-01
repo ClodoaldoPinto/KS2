@@ -1,0 +1,79 @@
+{% from 'macros.html' import classCorTime -%}
+{%- extends "base.html" %}
+
+{% block content %}
+<div style="position: relative;">
+<input type="button" value="Show Chart" style="position: absolute; right: 100px;"
+    onclick="showChart();"
+    />
+<h2 style="text-align: center;">
+    <span class="pageTitle">
+        {{ team_name }}'s radar
+        </span>
+    </h2>
+</div>
+<div id="chartDiv">
+    <img src="/team-radar-chart?radar={{ radar_json }}"
+        width="640" height="300" id="chartImage" alt="Donor Radar Chart"
+        />
+    </div>
+
+<div style="background-color: #fafafa;">
+    <table class="radar" id="radar" width="100%">
+        <thead>
+            <tr>
+                <th colspan="2">Overtake</th>
+                <th rowspan="3">Challenging Member</th>
+                <th colspan="9">Challenging Member Stats</th>
+                </tr>
+            <tr>
+                <th rowspan="2">Days</th>
+                <th rowspan="2">Date</th>
+                <th rowspan="2">Ran&shy;king</th>
+                <th colspan="4">Total Points</th>
+                <th colspan="4">Points Difference</th>
+                </tr>
+            <tr>
+                <th>Up&shy;date</th>
+                <th>24 hrs</th>
+                <th>7 days</th>
+                <th>Total <span style="font-weight: normal;">(1,000)</span></th>
+                <th>Up&shy;date</th>
+                <th>24 hrs</th>
+                <th>7 days</th>
+                <th>Total</th>
+                </tr>
+            </thead>
+        <tbody>
+            {%- for l in rs.radar %}
+            <tr class="{{ loop.cycle('cs', 'cn') }}">
+                {% if loop.index == 1 %}
+                    {% set pontos_0 = l.pontos_0 %}
+                {% endif %}
+                <td class="{{ 'redColor' if l.pontos_0 < pontos_0 else 'greenColor' }}">{{ l.days | zero2empty }}</td>
+                <td>{{ l.date | replace(' ', '&nbsp;') }}</td>
+                <td class="texto">
+                    {%- if loop.index > 1 -%}
+                    <a class="{{ classCorTime(l.pontos_7) }}" href="/team-radar?team={{ l.n_time }}">{{ l.team_name | wordwrap(20) | e | replace('\n', '&#8203;') }}</a>
+                    {%- else %}
+                    <span class="{{ classCorTime(l.pontos_7) }}">{{ l.team_name | wordwrap(20) | e | replace('\n', '&#8203;') }}</span>
+                    {%- endif -%}
+                    </td>
+                <td>{{ l.rank_0 | number_group | zero2empty }}</td>
+                <td>{{ l.pontos_up | number_group | zero2empty }}</td>
+                <td>{{ l.pontos_24 | number_group | zero2empty }}</td>
+                <td class="{{ classCorTime(l.pontos_7) }}">{{ l.pontos_7 | number_group | zero2empty }}</td>
+                <td>{{ (l.pontos_0 / 1000) | number_group | zero2empty }}</td>
+                <td>{{ l.pontos_up_diff | number_group | zero2empty }}</td>
+                <td>{{ l.pontos_24_diff | number_group | zero2empty }}</td>
+                <td>{{ l.pontos_7_diff | number_group | zero2empty }}</td>
+                <td>{{ l.pontos_0_diff | number_group | zero2empty }}</td>
+                </tr>
+            {%- endfor %}
+            </tbody>
+        </table>
+    </div>
+<script type="text/javascript">
+    fxheaderInit('radar', 400);
+</script>
+{% endblock %}

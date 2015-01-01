@@ -1,0 +1,5 @@
+#!/bin/bash
+while true;
+do
+ssh cz -nNCTR 5431:localhost4:5432
+done
