@@ -1,0 +1,30 @@
+<VirtualHost *:80>
+    ServerName alfa.kakaostats.com
+    ServerAlias alfa.kakaostats.c6
+    ServerAdmin admin@kakaostats.com
+    ErrorLog logs/kakaostats.com-error_log
+    CustomLog logs/kakaostats.com-access_log combined
+    LogLevel info
+    FileEtag None
+
+    Alias /static/ /var/www/html/kakaostats.com/
+    Alias /robots.txt /var/www/html/kakaostats.com/robots.txt
+
+    WSGIDaemonProcess kakaostats threads=5 python-path=/home/kakaostats.com:/home/kakaostats.com/view:/home/kakaostats.com/mod
+    WSGIScriptAlias / /home/kakaostats.com/kakaostats.wsgi
+
+    <Directory /home/kakaostats.com>
+        WSGICallableObject app
+        WSGIProcessGroup kakaostats
+        WSGIApplicationGroup %{GLOBAL}
+        Order deny,allow
+        Allow from all
+    </Directory>
+    
+    DocumentRoot /var/www/html/kakaostats.com
+    <Directory /var/www/html/kakaostats.com>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+</VirtualHost>
