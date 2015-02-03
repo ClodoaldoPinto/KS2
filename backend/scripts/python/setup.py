@@ -3,7 +3,7 @@
 connStr = dict()
 
 connStr['backend'] = \
-  'host=localhost4 dbname=folding user=kakaostats password=sompassword'
+  'dbname=folding user=folding'
 
 connStr['teste'] = \
   'host=localhost dbname=fx user=u password=somepassword'

@@ -1,7 +1,7 @@
-\t
+\pset tuples_only on
 \pset format unaligned
 \encoding SQL_ASCII
-\timing
+\timing on
 set session work_mem = 2097152;
 truncate table times_temp;
 truncate table usuarios_temp;
@@ -10,9 +10,9 @@ vacuum full usuarios_temp;
 vacuum full times_temp;
 vacuum full last_date_temp;
 begin;
-\copy last_date_temp (last_date) from '/folding/arquivos/data_usuarios.txt'
-\copy times_temp (n_time, time_nome, pontos, wus) from '/folding/arquivos/daily_team_summary_out.txt'
-\copy usuarios_temp (usuario, pontos, wus, n_time) from '/folding/arquivos/daily_user_summary_out.txt'
+\copy last_date_temp (last_date) from 'data_usuarios.txt'
+\copy times_temp (n_time, time_nome, pontos, wus) from 'daily_team_summary_out.txt'
+\copy usuarios_temp (usuario, pontos, wus, n_time) from 'daily_user_summary_out.txt'
 select db_feed();
 commit;
 -- ----------------------------------------------------------------------------

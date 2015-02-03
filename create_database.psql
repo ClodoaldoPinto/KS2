@@ -1,0 +1,9 @@
+\set password `cat passwords.txt | head -n 1`
+create role folding;
+alter role folding with login encrypted password :'password';
+
+\set password `cat passwords.txt | tail -n 1`
+create role folding_web;
+alter role folding_web with login encrypted password :'password';
+
+\i ks2.schema

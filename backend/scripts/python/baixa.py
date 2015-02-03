@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
 import pycurl, StringIO, re, time, os, subprocess, sys
+import os.path as path
 
 def seconds_since(start):
 
@@ -145,7 +146,7 @@ def download(server, file_name, file_dir):
 
    while True:
 
-      file_path = os.path.join(file_dir, file_name)
+      file_path = path.join(file_dir, file_name)
       url = 'http://%s/%s' % (server, file_name)
       size, last_modified = aguarda_update(url, file_path)
       sio = get_file(size, url)
@@ -162,12 +163,12 @@ def download(server, file_name, file_dir):
 
 def main():
 
-   file_dir = '/folding/arquivos'
+   file_dir = path.join(path.dirname(path.realpath(__file__)), '../../files')
    log_file_time = time.strftime('%y-%m-%d_%H:%M:%S', time.gmtime())
-   sys.stderr = open(os.path.join(file_dir,'download.log_%s' % log_file_time), 'wb')
+   sys.stderr = open(path.join(file_dir,'download.log_%s' % log_file_time), 'wb')
    sys.stdout = sys.stderr
-   #server = 'fah-web.stanford.edu'
-   server = 'kakaostats.com/summary_files'
+   server = 'fah-web.stanford.edu'
+   #server = 'kakaostats.com/summary_files'
 
    file_name = 'daily_team_summary.txt.bz2'
    download(server, file_name, file_dir)

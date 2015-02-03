@@ -1,13 +1,14 @@
 #! /usr/bin/env python
 import bz2, sys, re
+import os.path as path
 
 re_linha = re.compile(
   r'^(?P<name>[\041-\377]+)\t(?P<points>\d+(?:\.\d+)?)\t(?P<wus>\d+(?:\.\d+)?)\t(?P<team>\d{1,9})$'
   )
-
-fout = file(r'/folding/arquivos/daily_user_summary_out.txt', 'w')
-foutData = file(r'/folding/arquivos/data_usuarios.txt', 'w' )
-fin = bz2.BZ2File(r'/folding/arquivos/daily_user_summary.txt.bz2', 'r')
+files_path = path.join(path.dirname(path.realpath(__file__)), '../../files')
+fout = open(path.join(files_path, 'daily_user_summary_out.txt'), 'w')
+foutData = open(path.join(files_path, 'data_usuarios.txt'), 'w')
+fin = bz2.BZ2File(path.join(files_path, 'daily_user_summary.txt.bz2'), 'r')
 foutData.write(fin.readline())
 foutData.close()
 fin.readline()
@@ -30,8 +31,8 @@ fout.close()
 if lines < 500000:
     sys.exit('only %d lines in file daily_user_summary.txt.bz2' % lines)
 
-fout = file(r'/folding/arquivos/daily_team_summary_out.txt','w')
-fin = bz2.BZ2File(r'/folding/arquivos/daily_team_summary.txt.bz2')
+fout = open(path.join(files_path, 'daily_team_summary_out.txt'), 'w')
+fin = bz2.BZ2File(path.join(files_path, 'daily_team_summary.txt.bz2'))
 fin.readline()
 fin.readline()
 lines = 0
