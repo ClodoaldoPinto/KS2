@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.4.0
 -- Dumped by pg_dump version 9.4.0
--- Started on 2015-02-02 13:49:56 UTC
+-- Started on 2015-02-03 13:28:44 UTC
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -15,7 +15,7 @@ SET client_min_messages = warning;
 
 DROP DATABASE IF EXISTS folding;
 --
--- TOC entry 3195 (class 1262 OID 35366)
+-- TOC entry 3195 (class 1262 OID 1604007)
 -- Name: folding; Type: DATABASE; Schema: -; Owner: folding
 --
 
@@ -34,7 +34,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- TOC entry 3196 (class 1262 OID 35366)
+-- TOC entry 3196 (class 1262 OID 1604007)
 -- Dependencies: 3195
 -- Name: folding; Type: COMMENT; Schema: -; Owner: folding
 --
@@ -79,7 +79,7 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
 --
--- TOC entry 762 (class 2612 OID 35370)
+-- TOC entry 762 (class 2612 OID 1604011)
 -- Name: plpythonu; Type: PROCEDURAL LANGUAGE; Schema: -; Owner: postgres
 --
 
@@ -89,7 +89,7 @@ CREATE OR REPLACE PROCEDURAL LANGUAGE plpythonu;
 ALTER PROCEDURAL LANGUAGE plpythonu OWNER TO postgres;
 
 --
--- TOC entry 209 (class 3079 OID 35371)
+-- TOC entry 209 (class 3079 OID 1604012)
 -- Name: adminpack; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -106,7 +106,7 @@ COMMENT ON EXTENSION adminpack IS 'administrative functions for PostgreSQL';
 
 
 --
--- TOC entry 211 (class 3079 OID 35380)
+-- TOC entry 211 (class 3079 OID 1604021)
 -- Name: dblink; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -125,7 +125,7 @@ COMMENT ON EXTENSION dblink IS 'connect to other PostgreSQL databases from withi
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 657 (class 1247 OID 35428)
+-- TOC entry 657 (class 1247 OID 1604069)
 -- Name: type_donor_quarterly_rank; Type: TYPE; Schema: public; Owner: folding
 --
 
@@ -148,7 +148,7 @@ CREATE TYPE type_donor_quarterly_rank AS (
 ALTER TYPE type_donor_quarterly_rank OWNER TO folding;
 
 --
--- TOC entry 660 (class 1247 OID 35431)
+-- TOC entry 660 (class 1247 OID 1604072)
 -- Name: type_monthly_rank; Type: TYPE; Schema: public; Owner: folding
 --
 
@@ -162,7 +162,7 @@ CREATE TYPE type_monthly_rank AS (
 ALTER TYPE type_monthly_rank OWNER TO folding;
 
 --
--- TOC entry 663 (class 1247 OID 35434)
+-- TOC entry 663 (class 1247 OID 1604075)
 -- Name: type_select_team_size_table; Type: TYPE; Schema: public; Owner: folding
 --
 
@@ -177,7 +177,7 @@ CREATE TYPE type_select_team_size_table AS (
 ALTER TYPE type_select_team_size_table OWNER TO folding;
 
 --
--- TOC entry 666 (class 1247 OID 35437)
+-- TOC entry 666 (class 1247 OID 1604078)
 -- Name: type_team_production; Type: TYPE; Schema: public; Owner: folding
 --
 
@@ -191,7 +191,7 @@ CREATE TYPE type_team_production AS (
 ALTER TYPE type_team_production OWNER TO folding;
 
 --
--- TOC entry 669 (class 1247 OID 35440)
+-- TOC entry 669 (class 1247 OID 1604081)
 -- Name: type_two_serial_dates_x_days; Type: TYPE; Schema: public; Owner: folding
 --
 
@@ -204,7 +204,7 @@ CREATE TYPE type_two_serial_dates_x_days AS (
 ALTER TYPE type_two_serial_dates_x_days OWNER TO folding;
 
 --
--- TOC entry 265 (class 1255 OID 35441)
+-- TOC entry 265 (class 1255 OID 1604082)
 -- Name: batch_number(interval); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -224,7 +224,7 @@ limit 1$_$;
 ALTER FUNCTION public.batch_number(interval) OWNER TO folding;
 
 --
--- TOC entry 266 (class 1255 OID 35442)
+-- TOC entry 266 (class 1255 OID 1604083)
 -- Name: create_ndx_donors_production_temp(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -244,7 +244,7 @@ $$;
 ALTER FUNCTION public.create_ndx_donors_production_temp() OWNER TO folding;
 
 --
--- TOC entry 267 (class 1255 OID 35443)
+-- TOC entry 267 (class 1255 OID 1604084)
 -- Name: create_tab_new_members_temp(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -270,7 +270,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 178 (class 1259 OID 35444)
+-- TOC entry 178 (class 1259 OID 1604085)
 -- Name: datas; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -284,7 +284,7 @@ CREATE TABLE datas (
 ALTER TABLE datas OWNER TO folding;
 
 --
--- TOC entry 268 (class 1255 OID 35448)
+-- TOC entry 268 (class 1255 OID 1604089)
 -- Name: datas_last_batch_of_each_day(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -310,7 +310,7 @@ $$;
 ALTER FUNCTION public.datas_last_batch_of_each_day() OWNER TO folding;
 
 --
--- TOC entry 269 (class 1255 OID 35449)
+-- TOC entry 269 (class 1255 OID 1604090)
 -- Name: db_feed(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -410,7 +410,7 @@ $_$;
 ALTER FUNCTION public.db_feed() OWNER TO folding;
 
 --
--- TOC entry 270 (class 1255 OID 35450)
+-- TOC entry 270 (class 1255 OID 1604091)
 -- Name: deletar_insert_donors_production_matriz(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -485,7 +485,7 @@ $$;
 ALTER FUNCTION public.deletar_insert_donors_production_matriz() OWNER TO folding;
 
 --
--- TOC entry 271 (class 1255 OID 35451)
+-- TOC entry 271 (class 1255 OID 1604092)
 -- Name: deletar_update_donors_rank_temp(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -642,7 +642,7 @@ $_$;
 ALTER FUNCTION public.deletar_update_donors_rank_temp() OWNER TO folding;
 
 --
--- TOC entry 272 (class 1255 OID 35452)
+-- TOC entry 272 (class 1255 OID 1604093)
 -- Name: delete_old(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -733,7 +733,7 @@ end;$$;
 ALTER FUNCTION public.delete_old() OWNER TO folding;
 
 --
--- TOC entry 273 (class 1255 OID 35453)
+-- TOC entry 273 (class 1255 OID 1604094)
 -- Name: delete_team_active_members_history(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -772,7 +772,7 @@ $$;
 ALTER FUNCTION public.delete_team_active_members_history() OWNER TO folding;
 
 --
--- TOC entry 274 (class 1255 OID 35454)
+-- TOC entry 274 (class 1255 OID 1604095)
 -- Name: donor_monthly(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -883,7 +883,7 @@ $_$;
 ALTER FUNCTION public.donor_monthly() OWNER TO folding;
 
 --
--- TOC entry 275 (class 1255 OID 35455)
+-- TOC entry 275 (class 1255 OID 1604096)
 -- Name: donor_quarterly_rank_query(integer, integer, integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -942,7 +942,7 @@ $$;
 ALTER FUNCTION public.donor_quarterly_rank_query(v_quarter integer, v_team integer, v_year integer) OWNER TO folding;
 
 --
--- TOC entry 276 (class 1255 OID 35456)
+-- TOC entry 276 (class 1255 OID 1604097)
 -- Name: donor_quarterly_rank_query_count(integer, integer, integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -986,7 +986,7 @@ $$;
 ALTER FUNCTION public.donor_quarterly_rank_query_count(v_quarter integer, v_team integer, v_year integer) OWNER TO folding;
 
 --
--- TOC entry 277 (class 1255 OID 35457)
+-- TOC entry 277 (class 1255 OID 1604098)
 -- Name: in_day_batch_number(integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1008,7 +1008,7 @@ $_$;
 ALTER FUNCTION public.in_day_batch_number(integer) OWNER TO folding;
 
 --
--- TOC entry 278 (class 1255 OID 35459)
+-- TOC entry 278 (class 1255 OID 1604099)
 -- Name: insert_donor_first_wu(integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1027,42 +1027,34 @@ $_$;
 ALTER FUNCTION public.insert_donor_first_wu(integer) OWNER TO folding;
 
 --
--- TOC entry 279 (class 1255 OID 35460)
+-- TOC entry 279 (class 1255 OID 1604100)
 -- Name: insert_donor_milestones(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
 CREATE FUNCTION insert_donor_milestones() RETURNS boolean
     LANGUAGE plpythonu STRICT
-    AS $$import psycopg2
-import sys
-sys.path.append("/folding/scripts/python")
-from setup import connStr
-
-db = psycopg2.connect(connStr["backend"])
-cursor = db.cursor()
+    AS $$
 
 query = """\
-select d1_serial, d0_serial
-from select_two_consecutive_serial_dates() as tcsd
-inner join datas as d on d.data_serial = tcsd.d1_serial
-where d.data >= (select max(data) from datas)
-    - '7 weeks'::interval
-order by d.data
+    select d1_serial, d0_serial
+    from
+        select_two_consecutive_serial_dates() as tcsd
+        inner join datas as d on d.data_serial = tcsd.d1_serial
+    where d.data >= (select max(data) from datas) - '7 weeks'::interval
+    order by d.data
 ;"""
-cursor.execute(query)
-serial_dates = cursor.fetchall()
-
+serial_dates = plpy.execute(query)
 
 query = """\
-select distinct serial_date
-from donor_milestones
+    select distinct serial_date
+    from donor_milestones
 ;"""
 
-cursor.execute(query)
-l = [d[0] for d in cursor.fetchall()]
+rv = plpy.execute(query)
+l = [d['serial_date'] for d in rv]
 l = dict(zip(l, [None for d in l]))
 
-serial_dates = [d for d in serial_dates if d[0] not in l]
+serial_dates = [(d['d1_serial'], d['d0_serial']) for d in serial_dates if d['d1_serial'] not in l]
 del(l)
 
 for d1, d0 in serial_dates:
@@ -1079,18 +1071,15 @@ for d1, d0 in serial_dates:
     where u1.data = %s and u0.data = %s
     ;""" % (d1, d0)
 
-    cursor.execute(query)
+    plpy.execute(query)
 
-cursor.close()
-db.commit()
-db.close()
 $$;
 
 
 ALTER FUNCTION public.insert_donor_milestones() OWNER TO folding;
 
 --
--- TOC entry 280 (class 1255 OID 35461)
+-- TOC entry 280 (class 1255 OID 1604101)
 -- Name: insert_new_members_temp(integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1136,7 +1125,7 @@ $_$;
 ALTER FUNCTION public.insert_new_members_temp(integer) OWNER TO folding;
 
 --
--- TOC entry 281 (class 1255 OID 35462)
+-- TOC entry 281 (class 1255 OID 1604102)
 -- Name: insert_project_total_teams_production_temp(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1172,7 +1161,7 @@ from teams_production_temp
 ALTER FUNCTION public.insert_project_total_teams_production_temp() OWNER TO folding;
 
 --
--- TOC entry 282 (class 1255 OID 35463)
+-- TOC entry 282 (class 1255 OID 1604103)
 -- Name: insert_team_active_members_history(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1252,7 +1241,7 @@ $_$;
 ALTER FUNCTION public.insert_team_active_members_history() OWNER TO folding;
 
 --
--- TOC entry 289 (class 1255 OID 35464)
+-- TOC entry 287 (class 1255 OID 1604104)
 -- Name: insert_teams_production_temp(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1326,7 +1315,7 @@ t0.data = (select data_serial from datas order by data desc limit 1)
 ALTER FUNCTION public.insert_teams_production_temp() OWNER TO folding;
 
 --
--- TOC entry 290 (class 1255 OID 35465)
+-- TOC entry 288 (class 1255 OID 1604105)
 -- Name: isodow(timestamp with time zone); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1342,7 +1331,7 @@ end;$_$;
 ALTER FUNCTION public.isodow(timestamp with time zone) OWNER TO folding;
 
 --
--- TOC entry 291 (class 1255 OID 35466)
+-- TOC entry 289 (class 1255 OID 1604106)
 -- Name: kstime(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1354,7 +1343,7 @@ CREATE FUNCTION kstime() RETURNS text
 ALTER FUNCTION public.kstime() OWNER TO folding;
 
 --
--- TOC entry 292 (class 1255 OID 35467)
+-- TOC entry 290 (class 1255 OID 1604107)
 -- Name: plpgsql_call_handler(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1366,7 +1355,7 @@ CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
 ALTER FUNCTION public.plpgsql_call_handler() OWNER TO folding;
 
 --
--- TOC entry 293 (class 1255 OID 35468)
+-- TOC entry 291 (class 1255 OID 1604108)
 -- Name: plpgsql_validator(oid); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1378,7 +1367,7 @@ CREATE FUNCTION plpgsql_validator(oid) RETURNS void
 ALTER FUNCTION public.plpgsql_validator(oid) OWNER TO folding;
 
 --
--- TOC entry 294 (class 1255 OID 35469)
+-- TOC entry 292 (class 1255 OID 1604109)
 -- Name: select_donor_already_in_donor_first_wu(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1392,7 +1381,7 @@ $$;
 ALTER FUNCTION public.select_donor_already_in_donor_first_wu() OWNER TO folding;
 
 --
--- TOC entry 295 (class 1255 OID 35470)
+-- TOC entry 293 (class 1255 OID 1604110)
 -- Name: select_donors_data(integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1421,7 +1410,7 @@ end
 ALTER FUNCTION public.select_donors_data(integer) OWNER TO folding;
 
 --
--- TOC entry 179 (class 1259 OID 35471)
+-- TOC entry 179 (class 1259 OID 1604111)
 -- Name: donor_first_wu; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -1434,7 +1423,7 @@ CREATE TABLE donor_first_wu (
 ALTER TABLE donor_first_wu OWNER TO folding;
 
 --
--- TOC entry 296 (class 1255 OID 35474)
+-- TOC entry 294 (class 1255 OID 1604114)
 -- Name: select_new_members(integer, integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1458,7 +1447,7 @@ $_$;
 ALTER FUNCTION public.select_new_members(integer, integer) OWNER TO folding;
 
 --
--- TOC entry 297 (class 1255 OID 35475)
+-- TOC entry 295 (class 1255 OID 1604115)
 -- Name: select_team_size_table(integer, integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1492,7 +1481,7 @@ $_$;
 ALTER FUNCTION public.select_team_size_table(integer, integer) OWNER TO folding;
 
 --
--- TOC entry 298 (class 1255 OID 35476)
+-- TOC entry 296 (class 1255 OID 1604116)
 -- Name: select_two_consecutive_serial_dates(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1518,7 +1507,7 @@ $$;
 ALTER FUNCTION public.select_two_consecutive_serial_dates() OWNER TO folding;
 
 --
--- TOC entry 299 (class 1255 OID 35477)
+-- TOC entry 297 (class 1255 OID 1604117)
 -- Name: select_two_serial_dates_x_days(integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1554,7 +1543,7 @@ $_$;
 ALTER FUNCTION public.select_two_serial_dates_x_days(integer) OWNER TO folding;
 
 --
--- TOC entry 300 (class 1255 OID 35478)
+-- TOC entry 298 (class 1255 OID 1604118)
 -- Name: select_two_serial_dates_x_days_last_batch(integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1579,7 +1568,7 @@ $_$;
 ALTER FUNCTION public.select_two_serial_dates_x_days_last_batch(integer) OWNER TO folding;
 
 --
--- TOC entry 301 (class 1255 OID 35479)
+-- TOC entry 299 (class 1255 OID 1604119)
 -- Name: subteam_group_name(text, text); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1599,7 +1588,7 @@ $$;
 ALTER FUNCTION public.subteam_group_name(name text, pattern text) OWNER TO folding;
 
 --
--- TOC entry 302 (class 1255 OID 35480)
+-- TOC entry 300 (class 1255 OID 1604120)
 -- Name: subteam_group_name(text, text, boolean); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1625,7 +1614,7 @@ $$;
 ALTER FUNCTION public.subteam_group_name(name text, pattern text, case_sensitive boolean) OWNER TO folding;
 
 --
--- TOC entry 303 (class 1255 OID 35481)
+-- TOC entry 301 (class 1255 OID 1604121)
 -- Name: team_production(integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1702,7 +1691,7 @@ end;$_$;
 ALTER FUNCTION public.team_production(integer) OWNER TO folding;
 
 --
--- TOC entry 304 (class 1255 OID 35482)
+-- TOC entry 302 (class 1255 OID 1604122)
 -- Name: team_update_production(integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1759,7 +1748,7 @@ end;$_$;
 ALTER FUNCTION public.team_update_production(integer) OWNER TO folding;
 
 --
--- TOC entry 305 (class 1255 OID 35484)
+-- TOC entry 303 (class 1255 OID 1604123)
 -- Name: union_monthly_rank(integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1778,169 +1767,155 @@ $_$;
 ALTER FUNCTION public.union_monthly_rank(integer) OWNER TO folding;
 
 --
--- TOC entry 306 (class 1255 OID 35485)
--- Name: update_donor_first_wu(); Type: FUNCTION; Schema: public; Owner: folding
+-- TOC entry 314 (class 1255 OID 3176864)
+-- Name: update_donor_first_wu(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION update_donor_first_wu() RETURNS boolean
+CREATE FUNCTION update_donor_first_wu() RETURNS void
     LANGUAGE plpythonu STRICT
-    AS $$import psycopg2
-import sys
-sys.path.append("/folding/scripts/python")
-from setup import connStr
-
-db = psycopg2.connect(connStr["backend"])
-cursor = db.cursor()
-cursor.execute("select select_donors_data(0);")
-donors_d0 = [linha[0] for linha in cursor.fetchall()]
-cursor.execute("select select_donors_data(100);")
-raw_list = [linha[0] for linha in cursor.fetchall()]
+    AS $$
+rv = plpy.execute('select d from select_donors_data(0) s(d);')
+donors_d0 = [linha['d'] for linha in rv]
+rv = plpy.execute("select d from select_donors_data(100) s(d);")
+raw_list = [linha['d'] for linha in rv]
 donors_d1 = dict.fromkeys(raw_list, None)
 del(raw_list)
 nm = [donor for donor in donors_d0 if donor not in donors_d1]
 del(donors_d0)
 del(donors_d1)
-cursor.execute("select select_donor_already_in_donor_first_wu()");
-raw_list = [linha[0] for linha in cursor.fetchall()]
+rv = plpy.execute("select d from select_donor_already_in_donor_first_wu() s(d)");
+raw_list = [linha['d'] for linha in rv]
 donors_already_in = dict.fromkeys(raw_list, None)
 del(raw_list)
 for donor in [donor for donor in nm if donor not in donors_already_in]:
-  cursor.execute("select insert_donor_first_wu(" + str(donor) + ");")
-cursor.close()
-db.commit()
-db.close()
+    plpy.execute("select insert_donor_first_wu(" + str(donor) + ");")
 $$;
 
 
-ALTER FUNCTION public.update_donor_first_wu() OWNER TO folding;
+ALTER FUNCTION public.update_donor_first_wu() OWNER TO postgres;
 
 --
--- TOC entry 309 (class 1255 OID 35486)
+-- TOC entry 304 (class 1255 OID 1604125)
 -- Name: update_donor_yearly(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
 CREATE FUNCTION update_donor_yearly() RETURNS void
     LANGUAGE plpythonu STRICT
     AS $_$
-import psycopg2 as db
-import sys
-sys.path.append("/folding/scripts/python")
-from setup import connStr
-
-connection = db.connect(connStr["backend"])
-cursor = connection.cursor()
-update = connection.cursor()
-
 def fetchsome(cursor, chunk=50000):
-   while True:
-      rs = cursor.fetchmany(chunk)
-      if not rs: break
-      for row in rs: yield row
+    while True:
+        rs = cursor.fetchmany(chunk)
+        if not rs: break
+        for row in rs: yield row
 
 query = """
-select
-   extract(day from current_timestamp)::integer,
-   extract(hour from current_timestamp)::integer;
+    select
+        extract(day from current_timestamp)::integer as day,
+        extract(hour from current_timestamp)::integer as hour;
 """
-cursor.execute(query)
-day, hour = cursor.fetchall()[0]
+rv = plpy.execute(query)
+day, hour = rv[0]['day'], rv[0]['hour']
 
 if day != 1 or hour < 1 or hour > 3:
-   connection.close()
-   return
+    return
+
+query = """select update_donor_yearly($1, $2, $3, $4, $5, $6)"""
+update_donor_yearly_plan = plpy.prepare(query, ['integer', 'smallint', 'real', 'integer', 'integer', 'smallint'])
 
 query = """
-prepare update_query(integer, smallint, real, integer, integer, smallint) as
-select update_donor_yearly($1, $2, $3, $4, $5, $6)
+    select distinct
+        extract(year from um.data)::integer as year,
+        extract(month from um.data)::integer as month,
+        um.data_serial as batch
+    from (
+        select distinct d.data, d.data_serial
+        from
+            usuarios as u
+            inner join
+            datas as d on u.data = d.data_serial
+        where
+            u.data = (
+                select data_serial
+                from datas
+                where date_trunc('day', data) = date_trunc('day', d.data)
+                order by data desc limit 1
+            )
+            and
+            date_trunc('month', d.data) < date_trunc('month', (select last_date from last_date) at time zone 'utc')
+            and
+            date_trunc('day', d.data) = (
+                select date_trunc('day', data)
+                from datas
+                where date_trunc('month', data) = date_trunc('month', d.data)
+                order by data desc limit 1
+        )
+        union
+        select distinct d.data, d.data_serial
+        from
+            donor_work_old as dold
+            inner join
+            datas as d on d.data_serial = dold.data
+    ) as um
+    order by extract(year from um.data)::integer desc, extract(month from um.data)::integer desc
 """
-cursor.execute(query);
+months = plpy.execute(query)
 
 query = """
-select distinct extract(year from um.data)::integer,
-   extract(month from um.data)::integer, um.data_serial
-from (
-select distinct d.data, d.data_serial
-from usuarios as u
-inner join datas as d on u.data = d.data_serial
-where
-   u.data = (
-      select data_serial
-      from datas
-      where date_trunc('day', data) = date_trunc('day', d.data)
-      order by data desc limit 1
-      )
-   and
-   date_trunc('month', d.data) < date_trunc('month', (select last_date from last_date) at time zone 'utc')
-   and
-   date_trunc('day', d.data) = (
-      select date_trunc('day', data)
-      from datas
-      where date_trunc('month', data) = date_trunc('month', d.data)
-      order by data desc limit 1
-      )
-union
-select distinct d.data, d.data_serial
-from donor_work_old as dold
-inner join datas as d on d.data_serial = dold.data
-) as um
-order by extract(year from um.data)::integer desc, extract(month from um.data)::integer desc
+    select year, months
+    from donor_yearly_fill
 """
-cursor.execute(query)
-months = cursor.fetchall()
-#print months
-
-query_dm = """
-select year, months
-from donor_yearly_fill
-"""
+dm_plan = plpy.prepare(query)
 
 query = """
-select d0.donor,
-   d0.points - coalesce(d1.points, 0) as points, n_time
-from union_monthly_rank(%s) as d0
-left outer join union_monthly_rank(%s) as d1
-   on d0.donor = d1.donor
-inner join usuarios_indice as ui
-   on ui.usuario_serial = d0.donor
-where d0.points - coalesce(d1.points, 0) > 0
-order by points desc
-;
+    select
+        d0.donor,
+        d0.points - coalesce(d1.points, 0) as points,
+        n_time as team
+    from
+        union_monthly_rank($1) as d0
+        left outer join
+        union_monthly_rank($2) as d1 on d0.donor = d1.donor
+        inner join
+        usuarios_indice as ui on ui.usuario_serial = d0.donor
+    where d0.points - coalesce(d1.points, 0) > 0
+    order by points desc
+    ;
 """
+rsi_plan = plpy.prepare(query, ['integer', 'integer'])
+query = '''
+    update donor_yearly_fill
+    set months[array_upper(months, 1) +1] = $1
+    where year = $2
+'''
+update_plan = plpy.prepare(query, ['integer', 'integer'])
+query = '''insert into donor_yearly_fill (year, months) values($1, array[$2])'''
+insert_plan = plpy.prepare(query, ['integer', 'integer'])
 
-for i, (year, month, batch) in enumerate(months[:-1]):
-   if i > 1000: break
-   cursor.execute(query_dm)
-   dm = dict(cursor.fetchall())
-   #print 'dm:', dm
-   if year in dm:
-      if month in dm[year]:
-         continue
-      update.execute(
-         "update donor_yearly_fill set months[array_upper(months, 1) +1] = %s where year = %s",
-         (month, year))
-   else:
-      update.execute("insert into donor_yearly_fill values(%s, array[%s])", (year, month))
-   #print i, year, month, batch, months[i +1]
-   cursor.execute(query, (batch, months[i +1][2]))
-   #print 'fim execute query rsi'
-   rsi = fetchsome(cursor)
-   project_rank = 0
-   team_rank = dict()
-   for (donor, points, team) in rsi:
-      project_rank += 1
-      team_rank[team] = team_rank.get(team, 0) + 1
-      update.execute("execute update_query(%s, %s, %s, %s, %s, %s)",
-                     (donor, year, points, team_rank[team], project_rank, month))
-   connection.commit()
+for i, d in enumerate(months[:-1]):
+    year, month, batch = d['year'], d['month'], d['batch']
+    if i > 1000: break
+    rv = plpy.execute(dm_plan)
+    dm = dict([(l['year'], l['months']) for l in rv])
+    if year in dm:
+        if month in dm[year]:
+            continue
+        plpy.execute(update_plan, [month, year])
+    else:
+        plpy.execute(insert_plan, [year, month])
+    project_rank = 0
+    team_rank = dict()
+    for l in plpy.cursor(rsi_plan, (batch, months[i +1][2])):
+        project_rank += 1
+        team_rank[l['team']] = team_rank.get(l['team'], 0) + 1
+        plpy.execute(update_donor_yearly_plan, [donor, year, points, team_rank[team], project_rank, month])
 
-connection.close()
 $_$;
 
 
 ALTER FUNCTION public.update_donor_yearly() OWNER TO folding;
 
 --
--- TOC entry 310 (class 1255 OID 35487)
+-- TOC entry 305 (class 1255 OID 1604126)
 -- Name: update_donor_yearly(integer, smallint, real, integer, integer, smallint); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1983,7 +1958,7 @@ $_$;
 ALTER FUNCTION public.update_donor_yearly(integer, smallint, real, integer, integer, smallint) OWNER TO folding;
 
 --
--- TOC entry 311 (class 1255 OID 35488)
+-- TOC entry 313 (class 1255 OID 1604127)
 -- Name: update_donors_rank_temp(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -1991,28 +1966,28 @@ CREATE FUNCTION update_donors_rank_temp() RETURNS void
     LANGUAGE plpgsql
     AS $_$
 declare
-bn_3_hours constant integer := batch_number('3 hours'::interval);
-bn_1_day constant integer := batch_number('1 day'::interval);
-bn_7_days constant integer := batch_number('7 days'::interval);
-bn_50_days constant integer := batch_number('50 days'::interval);
-bn_14_days constant integer := batch_number('14 days 3 hours'::interval);
+bn_3_hours constant integer := coalesce(batch_number('3 hours'::interval), 0);
+bn_1_day constant integer := coalesce(batch_number('1 day'::interval), 0);
+bn_7_days constant integer := coalesce(batch_number('7 days'::interval), 0);
+bn_50_days constant integer := coalesce(batch_number('50 days'::interval), 0);
+bn_14_days constant integer := coalesce(batch_number('14 days 3 hours'::interval), 0);
 bn_last constant integer := (select data_serial from datas order by data desc limit 1);
-bn_dmonth constant integer := (
-select data_serial
-        from datas
-        where
-date_trunc('day', data) = date_trunc('day',
-(data + interval '1 month')::date -
-extract('day' from data + interval '1 month')::integer
-)
-and
-date_trunc('month', data) < date_trunc('month', current_date at time zone 'utc')
-order by data desc
-limit 1
-);
+bn_dmonth constant integer := coalesce((
+    select data_serial
+    from datas
+    where
+        date_trunc('day', data) = date_trunc('day',
+            (data + interval '1 month')::date -
+            extract('day' from data + interval '1 month')::integer
+        )
+        and
+        date_trunc('month', data) < date_trunc('month', current_date at time zone 'utc')
+    order by data desc
+    limit 1
+), 0);
 
 begin
-execute format('
+execute format($$
 insert into donors_production_temp (
     usuario,
     n_time,
@@ -2053,7 +2028,8 @@ select usuario, n_time,
     rank() over (order by pontos_month desc, pontos_0 desc) as rank_month,
     rank() over (partition by n_time order by pontos_month desc, pontos_0 desc) as rank_month_time
 from (
-    select d0.usuario, usuarios_indice.n_time,
+    select
+        d0.usuario, usuarios_indice.n_time,
         d0.pontos as pontos_0,
         d0.pontos - coalesce (d1.pontos, 0) as pontos_24,
         d0.pontos - coalesce (d7.pontos, 0) as pontos_7,
@@ -2061,17 +2037,17 @@ from (
         d0.pontos > coalesce (d50.pontos, 0) as active,
         d0.pontos > coalesce (d14.pontos, 0) and coalesce(d14.pontos, 0) < 1 as "new",
         d0.pontos - coalesce (dmonth.pontos, 0) as pontos_month
-    from usuarios as d0
-      left outer join usuarios as dup on d0.usuario = dup.usuario and dup.data = %2$s
-      left outer join usuarios as d1 on d0.usuario = d1.usuario and d1.data = %3$s
-      left outer join usuarios as d7 on d0.usuario = d7.usuario and d7.data = %4$s
-      left outer join usuarios as d50 on d0.usuario = d50.usuario and d50.data = %5$s
-      left outer join usuarios as d14 on d0.usuario = d14.usuario and d14.data = %6$s
-      left outer join usuarios as dmonth on d0.usuario = dmonth.usuario and dmonth.data = %7$s
-      inner join usuarios_indice on d0.usuario = usuario_serial
-    where
-d0.data = %1$s
-) sq '
+    from
+        usuarios as d0
+        left outer join usuarios as dup on d0.usuario = dup.usuario and dup.data = %2$s
+        left outer join usuarios as d1 on d0.usuario = d1.usuario and d1.data = %3$s
+        left outer join usuarios as d7 on d0.usuario = d7.usuario and d7.data = %4$s
+        left outer join usuarios as d50 on d0.usuario = d50.usuario and d50.data = %5$s
+        left outer join usuarios as d14 on d0.usuario = d14.usuario and d14.data = %6$s
+        left outer join usuarios as dmonth on d0.usuario = dmonth.usuario and dmonth.data = %7$s
+        inner join usuarios_indice on d0.usuario = usuario_serial
+    where d0.data = %1$s
+) sq $$
 , bn_last, bn_3_hours, bn_1_day, bn_7_days, bn_50_days, bn_14_days, bn_dmonth)
 ;
 end
@@ -2081,7 +2057,7 @@ $_$;
 ALTER FUNCTION public.update_donors_rank_temp() OWNER TO folding;
 
 --
--- TOC entry 283 (class 1255 OID 35489)
+-- TOC entry 306 (class 1255 OID 1604128)
 -- Name: update_donors_rank_temp_text(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -2179,7 +2155,7 @@ $_$;
 ALTER FUNCTION public.update_donors_rank_temp_text() OWNER TO folding;
 
 --
--- TOC entry 284 (class 1255 OID 35490)
+-- TOC entry 307 (class 1255 OID 1604129)
 -- Name: update_last_date(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -2198,7 +2174,7 @@ $$;
 ALTER FUNCTION public.update_last_date() OWNER TO folding;
 
 --
--- TOC entry 285 (class 1255 OID 35491)
+-- TOC entry 308 (class 1255 OID 1604130)
 -- Name: update_last_date_temp(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -2217,7 +2193,7 @@ $$;
 ALTER FUNCTION public.update_last_date_temp() OWNER TO folding;
 
 --
--- TOC entry 286 (class 1255 OID 35492)
+-- TOC entry 309 (class 1255 OID 1604131)
 -- Name: update_team_active_members_temp_2(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -2236,7 +2212,7 @@ $$;
 ALTER FUNCTION public.update_team_active_members_temp_2() OWNER TO folding;
 
 --
--- TOC entry 287 (class 1255 OID 35493)
+-- TOC entry 310 (class 1255 OID 1604132)
 -- Name: update_team_new_members_temp_2(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -2257,7 +2233,7 @@ where teams_production_temp.n_time = nm.n_time
 ALTER FUNCTION public.update_team_new_members_temp_2() OWNER TO folding;
 
 --
--- TOC entry 288 (class 1255 OID 35494)
+-- TOC entry 311 (class 1255 OID 1604133)
 -- Name: update_team_total_members_temp(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -2275,7 +2251,7 @@ $$;
 ALTER FUNCTION public.update_team_total_members_temp() OWNER TO folding;
 
 --
--- TOC entry 312 (class 1255 OID 35495)
+-- TOC entry 312 (class 1255 OID 1604134)
 -- Name: update_teams_rank_temp(); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -2355,7 +2331,7 @@ end;$$;
 ALTER FUNCTION public.update_teams_rank_temp() OWNER TO folding;
 
 --
--- TOC entry 313 (class 1255 OID 35496)
+-- TOC entry 283 (class 1255 OID 1604135)
 -- Name: user_production(integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -2438,7 +2414,7 @@ $_$;
 ALTER FUNCTION public.user_production(integer) OWNER TO folding;
 
 --
--- TOC entry 314 (class 1255 OID 35497)
+-- TOC entry 284 (class 1255 OID 1604136)
 -- Name: user_update_production(integer); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -2495,7 +2471,7 @@ end;$_$;
 ALTER FUNCTION public.user_update_production(integer) OWNER TO folding;
 
 --
--- TOC entry 307 (class 1255 OID 35498)
+-- TOC entry 285 (class 1255 OID 1604137)
 -- Name: weekdays(timestamp with time zone); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -2520,7 +2496,7 @@ $_$;
 ALTER FUNCTION public.weekdays(timestamp with time zone) OWNER TO folding;
 
 --
--- TOC entry 308 (class 1255 OID 35499)
+-- TOC entry 286 (class 1255 OID 1604138)
 -- Name: yearweek(timestamp with time zone); Type: FUNCTION; Schema: public; Owner: folding
 --
 
@@ -2539,7 +2515,7 @@ end;$_$;
 ALTER FUNCTION public.yearweek(timestamp with time zone) OWNER TO folding;
 
 --
--- TOC entry 180 (class 1259 OID 35513)
+-- TOC entry 180 (class 1259 OID 1604139)
 -- Name: datas_data_serial_seq; Type: SEQUENCE; Schema: public; Owner: folding
 --
 
@@ -2563,7 +2539,7 @@ ALTER SEQUENCE datas_data_serial_seq OWNED BY datas.data_serial;
 
 
 --
--- TOC entry 181 (class 1259 OID 35515)
+-- TOC entry 181 (class 1259 OID 1604141)
 -- Name: donor_milestones; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2577,7 +2553,7 @@ CREATE TABLE donor_milestones (
 ALTER TABLE donor_milestones OWNER TO folding;
 
 --
--- TOC entry 182 (class 1259 OID 35518)
+-- TOC entry 182 (class 1259 OID 1604144)
 -- Name: donor_milestones_ref; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2590,7 +2566,7 @@ CREATE TABLE donor_milestones_ref (
 ALTER TABLE donor_milestones_ref OWNER TO folding;
 
 --
--- TOC entry 183 (class 1259 OID 35521)
+-- TOC entry 183 (class 1259 OID 1604147)
 -- Name: donor_work_old; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2605,7 +2581,7 @@ CREATE TABLE donor_work_old (
 ALTER TABLE donor_work_old OWNER TO folding;
 
 --
--- TOC entry 184 (class 1259 OID 35524)
+-- TOC entry 184 (class 1259 OID 1604150)
 -- Name: donor_yearly; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2621,7 +2597,7 @@ CREATE TABLE donor_yearly (
 ALTER TABLE donor_yearly OWNER TO folding;
 
 --
--- TOC entry 185 (class 1259 OID 35530)
+-- TOC entry 185 (class 1259 OID 1604156)
 -- Name: donor_yearly_fill; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2634,7 +2610,7 @@ CREATE TABLE donor_yearly_fill (
 ALTER TABLE donor_yearly_fill OWNER TO folding;
 
 --
--- TOC entry 186 (class 1259 OID 35536)
+-- TOC entry 186 (class 1259 OID 1604162)
 -- Name: donors_production; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2664,7 +2640,7 @@ CREATE TABLE donors_production (
 ALTER TABLE donors_production OWNER TO folding;
 
 --
--- TOC entry 187 (class 1259 OID 35539)
+-- TOC entry 187 (class 1259 OID 1604165)
 -- Name: donors_production_temp; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2694,7 +2670,7 @@ CREATE TABLE donors_production_temp (
 ALTER TABLE donors_production_temp OWNER TO folding;
 
 --
--- TOC entry 188 (class 1259 OID 35542)
+-- TOC entry 188 (class 1259 OID 1604168)
 -- Name: fazer_times; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2706,7 +2682,7 @@ CREATE TABLE fazer_times (
 ALTER TABLE fazer_times OWNER TO folding;
 
 --
--- TOC entry 189 (class 1259 OID 35545)
+-- TOC entry 189 (class 1259 OID 1604171)
 -- Name: last_date; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2718,7 +2694,7 @@ CREATE TABLE last_date (
 ALTER TABLE last_date OWNER TO folding;
 
 --
--- TOC entry 190 (class 1259 OID 35548)
+-- TOC entry 190 (class 1259 OID 1604174)
 -- Name: last_date_temp; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2730,7 +2706,7 @@ CREATE TABLE last_date_temp (
 ALTER TABLE last_date_temp OWNER TO folding;
 
 --
--- TOC entry 191 (class 1259 OID 35551)
+-- TOC entry 191 (class 1259 OID 1604177)
 -- Name: linha; Type: SEQUENCE; Schema: public; Owner: folding
 --
 
@@ -2745,7 +2721,7 @@ CREATE SEQUENCE linha
 ALTER TABLE linha OWNER TO folding;
 
 --
--- TOC entry 192 (class 1259 OID 35553)
+-- TOC entry 192 (class 1259 OID 1604179)
 -- Name: maintenance; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2757,7 +2733,7 @@ CREATE TABLE maintenance (
 ALTER TABLE maintenance OWNER TO folding;
 
 --
--- TOC entry 193 (class 1259 OID 35557)
+-- TOC entry 193 (class 1259 OID 1604183)
 -- Name: processing_end; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2769,7 +2745,7 @@ CREATE TABLE processing_end (
 ALTER TABLE processing_end OWNER TO folding;
 
 --
--- TOC entry 194 (class 1259 OID 35560)
+-- TOC entry 194 (class 1259 OID 1604186)
 -- Name: team_active_members_history; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2783,7 +2759,7 @@ CREATE TABLE team_active_members_history (
 ALTER TABLE team_active_members_history OWNER TO folding;
 
 --
--- TOC entry 195 (class 1259 OID 35563)
+-- TOC entry 195 (class 1259 OID 1604189)
 -- Name: teams_production; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2807,7 +2783,7 @@ CREATE TABLE teams_production (
 ALTER TABLE teams_production OWNER TO folding;
 
 --
--- TOC entry 196 (class 1259 OID 35567)
+-- TOC entry 196 (class 1259 OID 1604193)
 -- Name: teams_production_temp; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2831,7 +2807,7 @@ CREATE TABLE teams_production_temp (
 ALTER TABLE teams_production_temp OWNER TO folding;
 
 --
--- TOC entry 197 (class 1259 OID 35571)
+-- TOC entry 197 (class 1259 OID 1604197)
 -- Name: temp_tamh; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2845,7 +2821,7 @@ CREATE TABLE temp_tamh (
 ALTER TABLE temp_tamh OWNER TO folding;
 
 --
--- TOC entry 198 (class 1259 OID 35574)
+-- TOC entry 198 (class 1259 OID 1604200)
 -- Name: times; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2860,7 +2836,7 @@ CREATE TABLE times (
 ALTER TABLE times OWNER TO folding;
 
 --
--- TOC entry 199 (class 1259 OID 35577)
+-- TOC entry 199 (class 1259 OID 1604203)
 -- Name: times_indice; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2873,7 +2849,7 @@ CREATE TABLE times_indice (
 ALTER TABLE times_indice OWNER TO folding;
 
 --
--- TOC entry 200 (class 1259 OID 35581)
+-- TOC entry 200 (class 1259 OID 1604207)
 -- Name: times_temp; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2888,7 +2864,7 @@ CREATE TABLE times_temp (
 ALTER TABLE times_temp OWNER TO folding;
 
 --
--- TOC entry 201 (class 1259 OID 35584)
+-- TOC entry 201 (class 1259 OID 1604210)
 -- Name: top_times; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2900,7 +2876,7 @@ CREATE TABLE top_times (
 ALTER TABLE top_times OWNER TO folding;
 
 --
--- TOC entry 202 (class 1259 OID 35587)
+-- TOC entry 202 (class 1259 OID 1604213)
 -- Name: usuarios; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2915,7 +2891,7 @@ CREATE TABLE usuarios (
 ALTER TABLE usuarios OWNER TO folding;
 
 --
--- TOC entry 203 (class 1259 OID 36791)
+-- TOC entry 203 (class 1259 OID 1604216)
 -- Name: usuarios_empty_fk; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2930,7 +2906,7 @@ ALTER TABLE usuarios_empty_fk OWNER TO folding;
 SET default_with_oids = true;
 
 --
--- TOC entry 204 (class 1259 OID 36795)
+-- TOC entry 204 (class 1259 OID 1604220)
 -- Name: usuarios_indice; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2944,7 +2920,7 @@ CREATE TABLE usuarios_indice (
 ALTER TABLE usuarios_indice OWNER TO folding;
 
 --
--- TOC entry 205 (class 1259 OID 36798)
+-- TOC entry 205 (class 1259 OID 1604223)
 -- Name: usuarios_indice_usuario_serial_seq; Type: SEQUENCE; Schema: public; Owner: folding
 --
 
@@ -2970,7 +2946,7 @@ ALTER SEQUENCE usuarios_indice_usuario_serial_seq OWNED BY usuarios_indice.usuar
 SET default_with_oids = false;
 
 --
--- TOC entry 206 (class 1259 OID 36800)
+-- TOC entry 206 (class 1259 OID 1604225)
 -- Name: usuarios_temp; Type: TABLE; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -2985,7 +2961,7 @@ CREATE TABLE usuarios_temp (
 ALTER TABLE usuarios_temp OWNER TO folding;
 
 --
--- TOC entry 207 (class 1259 OID 36803)
+-- TOC entry 207 (class 1259 OID 1604228)
 -- Name: ver_fazer_times; Type: VIEW; Schema: public; Owner: folding
 --
 
@@ -2999,7 +2975,7 @@ CREATE VIEW ver_fazer_times AS
 ALTER TABLE ver_fazer_times OWNER TO folding;
 
 --
--- TOC entry 208 (class 1259 OID 36807)
+-- TOC entry 208 (class 1259 OID 1604232)
 -- Name: vw_datas; Type: VIEW; Schema: public; Owner: folding
 --
 
@@ -3013,7 +2989,7 @@ CREATE VIEW vw_datas AS
 ALTER TABLE vw_datas OWNER TO folding;
 
 --
--- TOC entry 3034 (class 2604 OID 36811)
+-- TOC entry 3034 (class 2604 OID 1604236)
 -- Name: data_serial; Type: DEFAULT; Schema: public; Owner: folding
 --
 
@@ -3021,7 +2997,7 @@ ALTER TABLE ONLY datas ALTER COLUMN data_serial SET DEFAULT nextval('datas_data_
 
 
 --
--- TOC entry 3040 (class 2604 OID 36812)
+-- TOC entry 3040 (class 2604 OID 1604237)
 -- Name: usuario_serial; Type: DEFAULT; Schema: public; Owner: folding
 --
 
@@ -3029,7 +3005,7 @@ ALTER TABLE ONLY usuarios_indice ALTER COLUMN usuario_serial SET DEFAULT nextval
 
 
 --
--- TOC entry 3048 (class 2606 OID 36814)
+-- TOC entry 3048 (class 2606 OID 1604239)
 -- Name: donor_milestones_ref_pkey; Type: CONSTRAINT; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3040,7 +3016,7 @@ ALTER TABLE donor_milestones_ref CLUSTER ON donor_milestones_ref_pkey;
 
 
 --
--- TOC entry 3053 (class 2606 OID 36816)
+-- TOC entry 3053 (class 2606 OID 1604241)
 -- Name: donor_yearly_fill_pkey; Type: CONSTRAINT; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3049,7 +3025,7 @@ ALTER TABLE ONLY donor_yearly_fill
 
 
 --
--- TOC entry 3050 (class 2606 OID 36818)
+-- TOC entry 3050 (class 2606 OID 1604243)
 -- Name: donor_yearly_pkey; Type: CONSTRAINT; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3058,7 +3034,7 @@ ALTER TABLE ONLY donor_yearly
 
 
 --
--- TOC entry 3060 (class 2606 OID 36820)
+-- TOC entry 3060 (class 2606 OID 1604245)
 -- Name: fazer_times_pkey; Type: CONSTRAINT; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3067,7 +3043,7 @@ ALTER TABLE ONLY fazer_times
 
 
 --
--- TOC entry 3043 (class 2606 OID 36824)
+-- TOC entry 3043 (class 2606 OID 1604247)
 -- Name: pk_data; Type: CONSTRAINT; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3076,7 +3052,7 @@ ALTER TABLE ONLY datas
 
 
 --
--- TOC entry 3045 (class 2606 OID 36826)
+-- TOC entry 3045 (class 2606 OID 1604249)
 -- Name: pk_donor_first_wu; Type: CONSTRAINT; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3087,7 +3063,7 @@ ALTER TABLE donor_first_wu CLUSTER ON pk_donor_first_wu;
 
 
 --
--- TOC entry 3068 (class 2606 OID 36828)
+-- TOC entry 3068 (class 2606 OID 1604251)
 -- Name: times_indice_pkey; Type: CONSTRAINT; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3098,7 +3074,7 @@ ALTER TABLE times_indice CLUSTER ON times_indice_pkey;
 
 
 --
--- TOC entry 3070 (class 2606 OID 36830)
+-- TOC entry 3070 (class 2606 OID 1604253)
 -- Name: times_temp_pkey; Type: CONSTRAINT; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3107,7 +3083,7 @@ ALTER TABLE ONLY times_temp
 
 
 --
--- TOC entry 3072 (class 2606 OID 36832)
+-- TOC entry 3072 (class 2606 OID 1604255)
 -- Name: usuarios_empty_fk_data_key; Type: CONSTRAINT; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3116,7 +3092,7 @@ ALTER TABLE ONLY usuarios_empty_fk
 
 
 --
--- TOC entry 3074 (class 2606 OID 36834)
+-- TOC entry 3074 (class 2606 OID 1604257)
 -- Name: usuarios_indice_pkey; Type: CONSTRAINT; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3127,7 +3103,7 @@ ALTER TABLE usuarios_indice CLUSTER ON usuarios_indice_pkey;
 
 
 --
--- TOC entry 3041 (class 1259 OID 36835)
+-- TOC entry 3041 (class 1259 OID 1604258)
 -- Name: data_ndx; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3137,7 +3113,7 @@ ALTER TABLE datas CLUSTER ON data_ndx;
 
 
 --
--- TOC entry 3046 (class 1259 OID 36836)
+-- TOC entry 3046 (class 1259 OID 1604259)
 -- Name: donor_milestones_ndx; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3147,7 +3123,7 @@ ALTER TABLE donor_milestones CLUSTER ON donor_milestones_ndx;
 
 
 --
--- TOC entry 3054 (class 1259 OID 36838)
+-- TOC entry 3054 (class 1259 OID 1604260)
 -- Name: ndx_active_donor_production; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3155,7 +3131,7 @@ CREATE INDEX ndx_active_donor_production ON donors_production USING btree (activ
 
 
 --
--- TOC entry 3062 (class 1259 OID 1603959)
+-- TOC entry 3062 (class 1259 OID 3177097)
 -- Name: ndx_active_teams_production; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3163,7 +3139,7 @@ CREATE INDEX ndx_active_teams_production ON teams_production USING btree (active
 
 
 --
--- TOC entry 3055 (class 1259 OID 36840)
+-- TOC entry 3055 (class 1259 OID 1604262)
 -- Name: ndx_donor_production; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3171,7 +3147,7 @@ CREATE INDEX ndx_donor_production ON donors_production USING btree (usuario);
 
 
 --
--- TOC entry 3057 (class 1259 OID 1603952)
+-- TOC entry 3057 (class 1259 OID 3177090)
 -- Name: ndx_donor_production_temp; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3179,7 +3155,7 @@ CREATE INDEX ndx_donor_production_temp ON donors_production_temp USING btree (us
 
 
 --
--- TOC entry 3051 (class 1259 OID 36842)
+-- TOC entry 3051 (class 1259 OID 1604264)
 -- Name: ndx_donor_yearly_year; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3189,7 +3165,7 @@ ALTER TABLE donor_yearly CLUSTER ON ndx_donor_yearly_year;
 
 
 --
--- TOC entry 3056 (class 1259 OID 36843)
+-- TOC entry 3056 (class 1259 OID 1604265)
 -- Name: ndx_n_time_donor_production; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3197,7 +3173,7 @@ CREATE INDEX ndx_n_time_donor_production ON donors_production USING btree (n_tim
 
 
 --
--- TOC entry 3058 (class 1259 OID 1603953)
+-- TOC entry 3058 (class 1259 OID 3177091)
 -- Name: ndx_n_time_donor_production_temp; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3205,7 +3181,7 @@ CREATE INDEX ndx_n_time_donor_production_temp ON donors_production_temp USING bt
 
 
 --
--- TOC entry 3061 (class 1259 OID 36845)
+-- TOC entry 3061 (class 1259 OID 1604267)
 -- Name: ndx_team_active_members_history; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3215,7 +3191,7 @@ ALTER TABLE team_active_members_history CLUSTER ON ndx_team_active_members_histo
 
 
 --
--- TOC entry 3063 (class 1259 OID 1603958)
+-- TOC entry 3063 (class 1259 OID 3177096)
 -- Name: ndx_teams_production; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3223,7 +3199,7 @@ CREATE INDEX ndx_teams_production ON teams_production USING btree (n_time);
 
 
 --
--- TOC entry 3064 (class 1259 OID 36847)
+-- TOC entry 3064 (class 1259 OID 1604269)
 -- Name: ndx_teams_production_temp; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3231,7 +3207,7 @@ CREATE INDEX ndx_teams_production_temp ON teams_production_temp USING btree (n_t
 
 
 --
--- TOC entry 3065 (class 1259 OID 36848)
+-- TOC entry 3065 (class 1259 OID 1604270)
 -- Name: ndx_times_data; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3239,7 +3215,7 @@ CREATE INDEX ndx_times_data ON times USING btree (data);
 
 
 --
--- TOC entry 3066 (class 1259 OID 36849)
+-- TOC entry 3066 (class 1259 OID 1604271)
 -- Name: ndx_times_time_data; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3249,7 +3225,7 @@ ALTER TABLE times CLUSTER ON ndx_times_time_data;
 
 
 --
--- TOC entry 3075 (class 1259 OID 37150)
+-- TOC entry 3075 (class 1259 OID 1604272)
 -- Name: usuarios_temp_ndx; Type: INDEX; Schema: public; Owner: folding; Tablespace: 
 --
 
@@ -3257,7 +3233,7 @@ CREATE INDEX usuarios_temp_ndx ON usuarios_temp USING btree (n_time, usuario);
 
 
 --
--- TOC entry 3077 (class 2606 OID 37152)
+-- TOC entry 3077 (class 2606 OID 1604273)
 -- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: folding
 --
 
@@ -3266,7 +3242,7 @@ ALTER TABLE ONLY times
 
 
 --
--- TOC entry 3078 (class 2606 OID 37157)
+-- TOC entry 3078 (class 2606 OID 1604278)
 -- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: folding
 --
 
@@ -3275,7 +3251,7 @@ ALTER TABLE ONLY times
 
 
 --
--- TOC entry 3076 (class 2606 OID 37162)
+-- TOC entry 3076 (class 2606 OID 1604283)
 -- Name: donor_work_old_data_fkey; Type: FK CONSTRAINT; Schema: public; Owner: folding
 --
 
@@ -3284,7 +3260,7 @@ ALTER TABLE ONLY donor_work_old
 
 
 --
--- TOC entry 3079 (class 2606 OID 38672)
+-- TOC entry 3079 (class 2606 OID 1604288)
 -- Name: usuarios_data_fkey; Type: FK CONSTRAINT; Schema: public; Owner: folding
 --
 
@@ -3529,7 +3505,7 @@ GRANT ALL ON TABLE usuarios_indice TO folding;
 GRANT SELECT ON TABLE usuarios_indice TO folding_web;
 
 
--- Completed on 2015-02-02 13:49:56 UTC
+-- Completed on 2015-02-03 13:28:44 UTC
 
 --
 -- PostgreSQL database dump complete
