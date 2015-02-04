@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.4.0
 -- Dumped by pg_dump version 9.4.0
--- Started on 2015-02-03 13:28:44 UTC
+-- Started on 2015-02-03 13:32:20 UTC
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -3505,7 +3505,7 @@ GRANT ALL ON TABLE usuarios_indice TO folding;
 GRANT SELECT ON TABLE usuarios_indice TO folding_web;
 
 
--- Completed on 2015-02-03 13:28:44 UTC
+-- Completed on 2015-02-03 13:32:21 UTC
 
 --
 -- PostgreSQL database dump complete
