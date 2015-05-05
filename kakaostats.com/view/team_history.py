@@ -46,7 +46,7 @@ select
     coalesce(points, 0) points,
     coalesce(wus, 0) wus,
     to_char(gd, 'YYYY-MM-DD') as "day",
-    extract(isodow from gd) as dow,
+    extract(isodow from gd)::integer as dow,
     yearweek(gd) as yw
 from (
     select
@@ -75,7 +75,7 @@ from (
     window w as (order by d.data desc)
 ) ss right join (
     select gd::date gd
-    from 
+    from
     generate_series(
         (select data from d_min),
         (select max(data) from datas),
@@ -116,7 +116,7 @@ def team_history():
     del rs['team']
 
     history_json = quote_plus(json.dumps(
-        [[int(d['points']), d['wus'], d['day'], int(d['dow'])] for d in rs['daily'][:-1]]
+        [[int(d['points']), d['wus'], d['day'], d['dow']] for d in rs['daily'][:-1]]
         , separators=(',',':')))
 
     return render_template(
