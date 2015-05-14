@@ -111,7 +111,7 @@
                 <th rowspan="{{ rowspan }}"
                     {%- if order_opt == order %} class="destaque">{{ titulo }}
                     {%- else -%}
-                    ><a href="{{ url_for('members', order=order, search=search, activity=activity) | e }}">{{ titulo }}</a>
+                    ><a href="{{ url_for('donors', order=order, search=search, activity=activity) | e }}">{{ titulo }}</a>
                     {%- endif -%}
                     </th>
             {%- endmacro %}
